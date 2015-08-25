@@ -1,83 +1,93 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
-    android:orientation="vertical">
+    tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/my_nanodegree_apps"
-        android:layout_margin="20dp"
         android:layout_gravity="center"
-        android:textSize="20sp"/>
+        android:layout_margin="20dp"
+        android:onClick="onClick"
+        android:text="@string/my_nanodegree_apps"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/spotify"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/spotify_streamer"
         android:layout_gravity="center"
-        android:background="#F08C35"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"/>
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:background="#F08C35"
+        android:onClick="onClick"
+        android:text="@string/spotify_streamer" />
 
     <Button
         android:id="@+id/scores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/scores_app"
         android:layout_gravity="center"
-        android:background="#F08C35"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"/>
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:background="#F08C35"
+        android:onClick="onClick"
+        android:text="@string/scores_app" />
 
     <Button
         android:id="@+id/library"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/library_app"
         android:layout_gravity="center"
-        android:background="#F08C35"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"/>
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:background="#F08C35"
+        android:onClick="onClick"
+        android:text="@string/library_app" />
 
     <Button
         android:id="@+id/build_it"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/build_it"
         android:layout_gravity="center"
-        android:background="#F08C35"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"/>
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:background="#F08C35"
+        android:onClick="onClick"
+        android:text="@string/build_it" />
 
     <Button
         android:id="@+id/xyz_reader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/xyz_reader"
         android:layout_gravity="center"
-        android:background="#F08C35"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"/>
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:background="#F08C35"
+        android:onClick="onClick"
+        android:text="@string/xyz_reader" />
 
     <Button
         android:id="@+id/capstone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/capstone"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:background="#f0559c"/>
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:background="#f0559c"
+        android:onClick="onClick"
+        android:text="@string/capstone" />
 
 </LinearLayout>
