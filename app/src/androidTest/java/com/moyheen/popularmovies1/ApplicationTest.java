@@ -1,4 +1,4 @@
-package com.moyheen.project0;
+package com.moyheen.popularmovies1;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

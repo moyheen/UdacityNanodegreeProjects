@@ -1,14 +1,13 @@
 <resources>
-    <string name="app_name">Project 0</string>
+    <string name="app_name">Popular Movies</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="my_nanodegree_apps">My Nanodegree Apps!</string>
-    <string name="spotify_streamer">Spotify Streamer</string>
-    <string name="scores_app">Scores App</string>
-    <string name="library_app">Library App</string>
-    <string name="build_it">Build it bigger</string>
-    <string name="xyz_reader">XYZ Reader</string>
-    <string name="capstone">Capstone: My Own App</string>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_movie_details">MovieDetail</string>
+    <string name="mark_as_favorite">Mark as Favorite</string>
+
+    <string-array name="movie_sorting">
+        <item>Popular Movies</item>
+        <item>Highest Rated Movies</item>
+    </string-array>
 </resources>
