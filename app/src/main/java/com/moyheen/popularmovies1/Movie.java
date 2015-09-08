@@ -3,12 +3,14 @@ package com.moyheen.popularmovies1;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Created by moyheen on 9/5/2015.
  * Model class for the movies list
  */
-public class Movie {
-    private JSONObject data;
+public class Movie implements Serializable {
+    private transient JSONObject data;
 
     public Movie(JSONObject data) {
         this.data = data;

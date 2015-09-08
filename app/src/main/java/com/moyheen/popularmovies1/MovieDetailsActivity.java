@@ -12,27 +12,32 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MovieDetailsActivity extends AppCompatActivity {
-    private Toolbar mToolbar;
-    private Movie movie;
-    private TextView movieTitle;
-    private ImageView moviePoster;
-    private TextView movieYear;
-    private TextView movieRating;
-    private TextView movieDescription;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
+public class MovieDetailsActivity extends AppCompatActivity {
+    @Bind(R.id.toolbar)
+    Toolbar mToolbar;
+    @Bind(R.id.movie_title)
+    TextView movieTitle;
+    @Bind(R.id.movie_poster)
+    ImageView moviePoster;
+    @Bind(R.id.movie_year)
+    TextView movieYear;
+    @Bind(R.id.movie_rating)
+    TextView movieRating;
+    @Bind(R.id.movie_desc)
+    TextView movieDescription;
+
+    Movie movie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        movieTitle = (TextView) findViewById(R.id.movie_title);
-        moviePoster = (ImageView) findViewById(R.id.movie_poster);
-        movieYear = (TextView) findViewById(R.id.movie_year);
-        movieRating = (TextView) findViewById(R.id.movie_rating);
-        movieDescription = (TextView) findViewById(R.id.movie_desc);
+        // Binds the views with the Butterknife Library
+        ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -46,13 +51,15 @@ public class MovieDetailsActivity extends AppCompatActivity {
         // Gets the data from the previous activity
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            String data = bundle.getString("movies");
+            String data = String.valueOf(bundle.getSerializable("movies"));
             try {
                 movie = new Movie(new JSONObject(data));
 
                 // Loads the image with the Picasso library
                 Picasso.with(this)
                         .load(Path.BASE_IMAGE_URL + movie.getProperty("poster_path").toString())
+                        .placeholder(R.drawable.abc_btn_default_mtrl_shape)
+                        .error(R.drawable.abc_btn_rating_star_off_mtrl_alpha)
                         .into(moviePoster);
 
                 // Sets the values for the views with data from the Bundle received
@@ -61,7 +68,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 movieRating.setText(movie.getProperty("vote_average").toString() + "/10");
                 movieDescription.setText(movie.getProperty("overview").toString());
             } catch (JSONException exception) {
-
+                movie = null;
             }
         }
     }

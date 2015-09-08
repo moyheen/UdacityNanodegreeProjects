@@ -2,6 +2,7 @@ package com.moyheen.popularmovies1;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +13,14 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * Created by moyheen on 9/5/2015.
  */
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder> {
-    private Context mContext;
+    private static Context mContext;
     List<Movie> movieList;
 
     // Constructor for the MoviesAdapter class
@@ -40,14 +44,20 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
         // Loads the image with the Picasso library
         Picasso.with(mContext)
                 .load(Path.BASE_IMAGE_URL + movieList.get(position).getProperty("poster_path").toString())
+                .placeholder(R.drawable.abc_ic_go_search_api_mtrl_alpha)
+                .error(R.drawable.abc_btn_check_material)
                 .into(holder.imageView);
 
         holder.imageView.setOnClickListener(new View.OnClickListener() {
+            Bundle bundle = new Bundle();
+
             @Override
             public void onClick(View view) {
+
                 Intent i = new Intent(mContext, MovieDetailsActivity.class);
                 // Passes data for the specific movie selected into the MovieDetails activity
-                i.putExtra("movies", movieList.get(position).toString());
+                bundle.putSerializable("movies", movieList.get(position).toString());
+                i.putExtras(bundle);
                 mContext.startActivity(i);
             }
         });
@@ -59,11 +69,12 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
     }
 
     public static class MoviesViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.movieImage)
         ImageView imageView;
 
         public MoviesViewHolder(View view) {
             super(view);
-            imageView = (ImageView) view.findViewById(R.id.movieImage);
+            ButterKnife.bind(this, view);
         }
     }
 }

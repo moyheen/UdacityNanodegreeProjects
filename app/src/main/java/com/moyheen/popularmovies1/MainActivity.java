@@ -1,6 +1,7 @@
 package com.moyheen.popularmovies1;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,11 +23,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
-    private Toolbar mToolbar;
-    private Spinner mSpinner;
-    private ProgressBar mProgressBar;
-    private RecyclerView mRecyclerView;
+    @Bind(R.id.toolbar)
+    Toolbar mToolbar;
+    @Bind(R.id.toolbar_spinner)
+    Spinner mSpinner;
+    @Bind(R.id.progressBar)
+    ProgressBar mProgressBar;
+    @Bind(R.id.moviesView)
+    RecyclerView mRecyclerView;
     private GridLayoutManager gridLayoutManager;
     private NetworkConnection networkConnection;
     private MoviesAdapter moviesAdapter;
@@ -34,16 +42,17 @@ public class MainActivity extends AppCompatActivity {
     public final String DISCOVER_MOVIE = "/discover/movie";
     public final String POPULARITY_DESC = "popularity.desc";
     public final String VOTE_AVERAGE_DESC = "vote_average.desc";
+    public static final String MOVIE_LIST_KEY = "movieListKey";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mSpinner = (Spinner) findViewById(R.id.toolbar_spinner);
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-        mRecyclerView = (RecyclerView) findViewById(R.id.moviesView);
+        // Uses the Butterkinfe Library to find and automatically cast
+        // the corresponding view in layout
+        ButterKnife.bind(this);
+
         gridLayoutManager = new GridLayoutManager(this, 2);
         networkConnection = new NetworkConnection(this);
 
@@ -64,19 +73,34 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 if (mSpinner.getSelectedItem().toString().equals("Popular Movies")) {
-                    displayMovies(POPULARITY_DESC);
+
+                    if (savedInstanceState != null) {
+                        useSavedState(savedInstanceState);
+                        moviesList = useSavedState(savedInstanceState);
+                        moviesAdapter = new MoviesAdapter(MainActivity.this, moviesList);
+                    } else {
+                        displayMovies(POPULARITY_DESC);
+                        moviesAdapter = new MoviesAdapter(MainActivity.this, moviesList);
+                    }
+
+
                 } else if (mSpinner.getSelectedItem().toString().equals("Highest Rated Movies")) {
-                    displayMovies(VOTE_AVERAGE_DESC);
+
+                    if (savedInstanceState != null) {
+                        moviesList = useSavedState(savedInstanceState);
+                        moviesAdapter = new MoviesAdapter(MainActivity.this, moviesList);
+                    } else {
+                        displayMovies(VOTE_AVERAGE_DESC);
+                        moviesAdapter = new MoviesAdapter(MainActivity.this, moviesList);
+                    }
                 }
+                mRecyclerView.setAdapter(moviesAdapter);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-
-        moviesAdapter = new MoviesAdapter(this, moviesList);
-        mRecyclerView.setAdapter(moviesAdapter);
     }
 
     /**
@@ -116,5 +140,25 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        // Saves the current list of movies
+        outState.putParcelableArrayList(MOVIE_LIST_KEY, (ArrayList<? extends Parcelable>) (ArrayList) moviesList);
+
+        super.onSaveInstanceState(outState);
+    }
+
+    /**
+     * Uses the data in the bundle to set the views
+     */
+    private List useSavedState(Bundle savedInstanceState) {
+        // Restore values from a saved state
+        moviesList = (ArrayList<Movie>) savedInstanceState.get(MOVIE_LIST_KEY);
+        mProgressBar.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.VISIBLE);
+
+        return moviesList;
     }
 }
