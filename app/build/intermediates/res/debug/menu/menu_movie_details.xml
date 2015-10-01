@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.moyheen.popularmovies2.activity.MovieDetailsActivity">
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/ic_share_white"
+        android:orderInCategory="100"
+        android:title="@string/action_share"
+        app:showAsAction="always" />
+</menu>
+<!-- From: file:/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/src/main/res/menu/menu_movie_details.xml -->

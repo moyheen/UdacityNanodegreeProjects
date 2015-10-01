@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-cd1bfcb3c7066115f8165b960cd42e1b23964987.jar" />
+    </item>
+    <item
+        jar="/Users/moyinoluwa/.gradle/caches/modules-2/files-2.1/com.koushikdutta.async/androidasync/2.0.9/6969e62b23027d9e1fc36b9f7dd8e2c8f3104324/androidasync-2.0.9.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6969e62b23027d9e1fc36b9f7dd8e2c8f3104324">
+        <dex dex="/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/build/intermediates/pre-dexed/debug/androidasync-2.0.9-1f7ff638dc4d867a9e49f84373a9ad82e6c8a261.jar" />
+    </item>
+    <item
+        jar="/Users/moyinoluwa/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-716c41f26fb7ea2b5756894d09db9541964e432a.jar" />
+    </item>
+    <item
+        jar="/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
+        <dex dex="/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/build/intermediates/pre-dexed/debug/classes-0fe06a14bcf3c76e6a1ffb6c3e618533fa2c8430.jar" />
+    </item>
+    <item
+        jar="/Users/moyinoluwa/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/build/intermediates/pre-dexed/debug/butterknife-7.0.1-de27b63596e01482a5ff36cc94c00ebbe39676f6.jar" />
+    </item>
+    <item
+        jar="/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/build/intermediates/pre-dexed/debug/classes-2197da48803549ebe37a9a467f522d827517d22e.jar" />
+    </item>
+    <item
+        jar="/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/build/intermediates/exploded-aar/com.github.satyan/sugar/1.3.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d59de211e85bc8c7f75c7a4890d229ff8c4dab87">
+        <dex dex="/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/build/intermediates/pre-dexed/debug/classes-da2b25ed40acbe0ce611c47f13e683e7c0553d2a.jar" />
+    </item>
+    <item
+        jar="/Users/moyinoluwa/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-2481aece027535d18821683c802d12a310ea48a3.jar" />
+    </item>
+    <item
+        jar="/Users/moyinoluwa/.gradle/caches/modules-2/files-2.1/com.koushikdutta.ion/ion/2.0.9/508372c8870246051b2f839859d8340fc96d3d10/ion-2.0.9.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="508372c8870246051b2f839859d8340fc96d3d10">
+        <dex dex="/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/build/intermediates/pre-dexed/debug/ion-2.0.9-10e2109967652057bbf1defd03cd00f6617a4a42.jar" />
+    </item>
+    <item
+        jar="/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/build/intermediates/pre-dexed/debug/classes-2646d1ab53f5baf25af923955a335abb239bc0b5.jar" />
+    </item>
+    <item
+        jar="/Users/moyinoluwa/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3/5fc52c41ef0239d1093a1eb7c3697036183677ce/gson-2.3.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
+        <dex dex="/Users/moyinoluwa/Documents/PersonalAndroidStudioProjects/UdacityNanodegreeProjects/PopularMovies2/app/build/intermediates/pre-dexed/debug/gson-2.3-f2c574bc0bc9f52be137c0f944c3c845fadb86b8.jar" />
+    </item>
+
+</items>

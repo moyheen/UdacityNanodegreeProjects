@@ -3,11 +3,24 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_movie_details">MovieDetail</string>
+    <string name="action_share">Share</string>
+    <string name="title_activity_movie_details">Movie Details</string>
     <string name="mark_as_favorite">Mark as Favorite</string>
+    <string name="trailer">Trailers:</string>
+    <string name="reviews">Reviews:</string>
+    <string name="no_trailer">No trailer available</string>
+    <string name="no_review">No review available</string>
+
+    <string name="popular_movies">Popular Movies</string>
+    <string name="rated_movies">Highest Rated Movies</string>
+    <string name="favorite_movies">Favorite Movies</string>
 
     <string-array name="movie_sorting">
         <item>Popular Movies</item>
         <item>Highest Rated Movies</item>
+        <item>Favorite Movies</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
