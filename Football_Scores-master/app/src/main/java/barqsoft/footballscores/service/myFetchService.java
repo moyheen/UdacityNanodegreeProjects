@@ -52,7 +52,7 @@ public class myFetchService extends IntentService {
         //final String QUERY_MATCH_DAY = "matchday";
 
         Uri fetch_build = Uri.parse(BASE_URL).buildUpon().
-                appendQueryParameter(QUERY_TIME_FRAME, "p2").build();
+                appendQueryParameter(QUERY_TIME_FRAME, timeFrame).build();
         HttpURLConnection m_connection = null;
         BufferedReader reader = null;
         String JSON_data = null;
@@ -61,7 +61,7 @@ public class myFetchService extends IntentService {
             URL fetch = new URL(fetch_build.toString());
             m_connection = (HttpURLConnection) fetch.openConnection();
             m_connection.setRequestMethod("GET");
-            m_connection.addRequestProperty("X-Auth-Token", getString(R.string.api_key));
+            m_connection.addRequestProperty("X-Auth-Token", getResources().getString(R.string.api_key));
             m_connection.connect();
 
             // Read the input stream into a String
@@ -106,10 +106,9 @@ public class myFetchService extends IntentService {
                 if (matches.length() == 0) {
                     //if there is no data, call the function on dummy data
                     //this is expected behavior during the off season.
-                    processJSONdata(getString(R.string.dummy_data), getApplicationContext(), false);
+                    processJSONdata(getResources().getString(R.string.dummy_data), getApplicationContext(), false);
                     return;
                 }
-
                 processJSONdata(JSON_data, getApplicationContext(), true);
             } else {
                 //Could not Connect
@@ -161,7 +160,6 @@ public class myFetchService extends IntentService {
         String Away_goals = null;
         String match_id = null;
         String match_day = null;
-
 
         try {
             JSONArray matches = new JSONObject(JSONdata).getJSONArray(FIXTURES);
@@ -234,18 +232,19 @@ public class myFetchService extends IntentService {
                     values.add(match_values);
                 }
             }
+
             int inserted_data = 0;
-            ContentValues[] insert_data = new ContentValues[values.size()];
-            values.toArray(insert_data);
-            inserted_data = mContext.getContentResolver().bulkInsert(
-                    DatabaseContract.BASE_CONTENT_URI, insert_data);
+            if (values.size() > 0) {
+                ContentValues[] insert_data = new ContentValues[values.size()];
+                values.toArray(insert_data);
+                mContext.getContentResolver().bulkInsert(
+                        DatabaseContract.BASE_CONTENT_URI, insert_data);
 
-            updateWidgets();
-
+                updateWidgets();
+            }
         } catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage());
         }
-
     }
 
     private void updateWidgets() {

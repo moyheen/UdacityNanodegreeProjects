@@ -7,27 +7,74 @@
     <LinearLayout
         android:id="@+id/widget"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/touch_selector_white"
-        android:orientation="vertical"
-        android:padding="4dp">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/widget_icon"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_weight="1"
+            android:contentDescription="@string/app_icon"
             tools:src="@drawable/ic_launcher" />
 
-        <TextView
-            android:id="@+id/widget_high_score"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:fontFamily="sans-serif"
-            android:textAppearance="?android:textAppearanceLarge"
-            android:textColor="@color/purple01"
-            tools:text="48" />
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/widget_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:textColor="@color/orange14" />
+
+                <TextView
+                    android:id="@+id/widget_home_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:textColor="@color/orange14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/widget_away"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:textColor="@color/orange14" />
+
+                <TextView
+                    android:id="@+id/widget_away_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:textColor="@color/orange14" />
+            </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
 </FrameLayout>

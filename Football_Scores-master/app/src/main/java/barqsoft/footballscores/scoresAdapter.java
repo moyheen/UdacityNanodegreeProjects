@@ -1,19 +1,24 @@
 package barqsoft.footballscores;
 
+import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v4.widget.CursorAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import barqsoft.footballscores.widget.FootballWidgetIntentService;
+
 /**
  * Created by yehya khaled on 2/26/2015.
  */
 public class scoresAdapter extends CursorAdapter {
+
     public static final int COL_HOME = 3;
     public static final int COL_AWAY = 4;
     public static final int COL_HOME_GOALS = 6;
@@ -42,15 +47,22 @@ public class scoresAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, final Context context, Cursor cursor) {
         final ViewHolder mHolder = (ViewHolder) view.getTag();
+
+        // Updates the value of the widgets
+        FootballWidgetIntentService.home = cursor.getString(COL_HOME).substring(0, 2);
+        FootballWidgetIntentService.away = cursor.getString(COL_AWAY).substring(0, 2);
+        FootballWidgetIntentService.homeGoals = cursor.getString(COL_HOME_GOALS);
+        FootballWidgetIntentService.awayGoals = cursor.getString(COL_AWAY_GOALS);
+
         mHolder.home_name.setText(cursor.getString(COL_HOME));
         mHolder.away_name.setText(cursor.getString(COL_AWAY));
         mHolder.date.setText(cursor.getString(COL_MATCHTIME));
         mHolder.score.setText(Utilies.getScores(cursor.getInt(COL_HOME_GOALS), cursor.getInt(COL_AWAY_GOALS)));
         mHolder.match_id = cursor.getDouble(COL_ID);
         mHolder.home_crest.setImageResource(Utilies.getTeamCrestByTeamName(
-                cursor.getString(COL_HOME)));
+                cursor.getString(COL_HOME), context));
         mHolder.away_crest.setImageResource(Utilies.getTeamCrestByTeamName(
-                cursor.getString(COL_AWAY)
+                cursor.getString(COL_AWAY), context
         ));
         LayoutInflater vi = (LayoutInflater) context.getApplicationContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -62,9 +74,9 @@ public class scoresAdapter extends CursorAdapter {
                     , ViewGroup.LayoutParams.MATCH_PARENT));
             TextView match_day = (TextView) v.findViewById(R.id.matchday_textview);
             match_day.setText(Utilies.getMatchDay(cursor.getInt(COL_MATCHDAY),
-                    cursor.getInt(COL_LEAGUE)));
+                    cursor.getInt(COL_LEAGUE), context));
             TextView league = (TextView) v.findViewById(R.id.league_textview);
-            league.setText(Utilies.getLeague(cursor.getInt(COL_LEAGUE)));
+            league.setText(Utilies.getLeague(cursor.getInt(COL_LEAGUE), context));
             Button share_button = (Button) v.findViewById(R.id.share_button);
             share_button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -86,5 +98,4 @@ public class scoresAdapter extends CursorAdapter {
         shareIntent.putExtra(Intent.EXTRA_TEXT, ShareText + FOOTBALL_SCORES_HASHTAG);
         return shareIntent;
     }
-
 }
