@@ -128,7 +128,6 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
             ean.setText(savedInstanceState.getString(EAN_CONTENT));
             ean.setHint("");
         }
-
         return rootView;
     }
 
@@ -141,15 +140,12 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
             if (result.getContents() == null) {
-                Toast.makeText(getActivity(), R.string.cancelled, Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), getResources().getString(R.string.cancelled), Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(getActivity(), R.string.scanned + result.getContents(), Toast.LENGTH_LONG).show();
-
-                startBookIntent(result.getContents());
+                String resultContents = result.getContents();
+                Toast.makeText(getActivity(), getResources().getString(R.string.scanned) + resultContents, Toast.LENGTH_LONG).show();
+                ean.setText(resultContents);
             }
-        } else {
-            // This is important, otherwise the result will not be passed to the fragment
-            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 
@@ -183,24 +179,44 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
         }
 
         String bookTitle = data.getString(data.getColumnIndex(AlexandriaContract.BookEntry.TITLE));
-        ((TextView) rootView.findViewById(R.id.bookTitle)).setText(bookTitle);
+        // Sets a default title for when there is no title
+        if (bookTitle != null) {
+            ((TextView) rootView.findViewById(R.id.bookTitle)).setText(bookTitle);
+        } else {
+            ((TextView) rootView.findViewById(R.id.bookTitle)).setText(R.string.no_title);
+        }
 
         String bookSubTitle = data.getString(data.getColumnIndex(AlexandriaContract.BookEntry.SUBTITLE));
-        ((TextView) rootView.findViewById(R.id.bookSubTitle)).setText(bookSubTitle);
-
+        // Displays a subtitle only when there is one
+        if (bookSubTitle != null) {
+            ((TextView) rootView.findViewById(R.id.bookSubTitle)).setText(bookSubTitle);
+        }
         String authors = data.getString(data.getColumnIndex(AlexandriaContract.AuthorEntry.AUTHOR));
+        // Sets a default string for when there is no author
+        if (authors != null) {
+            String[] authorsArr = authors.split(",");
+            ((TextView) rootView.findViewById(R.id.authors)).setLines(authorsArr.length);
+            ((TextView) rootView.findViewById(R.id.authors)).setText(authors.replace(",", "\n"));
+        } else {
+            ((TextView) rootView.findViewById(R.id.authors)).setText(R.string.no_author);
+        }
 
-        String[] authorsArr = authors.split(",");
-        ((TextView) rootView.findViewById(R.id.authors)).setLines(authorsArr.length);
-        ((TextView) rootView.findViewById(R.id.authors)).setText(authors.replace(",", "\n"));
         String imgUrl = data.getString(data.getColumnIndex(AlexandriaContract.BookEntry.IMAGE_URL));
-        if (Patterns.WEB_URL.matcher(imgUrl).matches()) {
-            new DownloadImage((ImageView) rootView.findViewById(R.id.bookCover)).execute(imgUrl);
-            rootView.findViewById(R.id.bookCover).setVisibility(View.VISIBLE);
+        // Displays an image only when there is one
+        if (imgUrl != null) {
+            if (Patterns.WEB_URL.matcher(imgUrl).matches()) {
+                new DownloadImage((ImageView) rootView.findViewById(R.id.bookCover)).execute(imgUrl);
+                rootView.findViewById(R.id.bookCover).setVisibility(View.VISIBLE);
+            }
         }
 
         String categories = data.getString(data.getColumnIndex(AlexandriaContract.CategoryEntry.CATEGORY));
-        ((TextView) rootView.findViewById(R.id.categories)).setText(categories);
+        // Sets a default category for when there is no category
+        if (categories != null) {
+            ((TextView) rootView.findViewById(R.id.categories)).setText(categories);
+        } else {
+            ((TextView) rootView.findViewById(R.id.categories)).setText(R.string.no_category);
+        }
 
         rootView.findViewById(R.id.save_button).setVisibility(View.VISIBLE);
         rootView.findViewById(R.id.delete_button).setVisibility(View.VISIBLE);
@@ -233,7 +249,7 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
             getActivity().startService(bookIntent);
             AddBook.this.restartLoader();
         } else {
-            Toast.makeText(getActivity(), R.string.connection_error, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getResources().getString(R.string.connection_error), Toast.LENGTH_SHORT).show();
         }
     }
 
