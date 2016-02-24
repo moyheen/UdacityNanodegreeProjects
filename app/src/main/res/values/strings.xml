@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">GDG NG Events</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="view_events">Events</string>
+    <string name="past_events">Past Events</string>
+    <string name="upcoming_events">Upcoming Events</string>
+    <string name="favorites">Favorites</string>
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="organizer_empty_login">Please enter a password</string>
+    <string name="organizer_wrong_login">Incorrect password. Please try again.</string>
+    <string name="no_network_connection">Please check your internet connection and try again</string>
+
+    <string name="no_gdg_organizers">Seems like no GDG Organizers are listed yet. \nWhy not correct that?</string>
+    <string name="gdg">GDG</string>
+    <string name="gdg_name">GDG Name</string>
+    <string name="lead_organizer">Lead Organizer</string>
+    <string name="lead_organizer_name">Name</string>
+    <string name="lead_organizer_email">Email address</string>
+
+    <string name="no_events_yet">You\'ve not added any events yet. Why not get started by clicking on the red button below?</string>
+    <string name="create_event">Create Event</string>
+    <string name="event_name">Event name</string>
+    <string name="short_description">Short description</string>
+    <string name="long_description">Long description</string>
+    <string name="venue">Venue</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="duration">Duration</string>
+    <string name="speakers">Speakers</string>
+    <string name="tags">Tags</string>
+    <string name="create">Create</string>
+    <string name="events">Events</string>
+    <string name="directions">Get Directions</string>
+    <string name="call_an_uber">Call an Uber</string>
+    <string name="no_events_available">No events are currently available. \nPlease check back later.</string>
+    <string name="bullet_point">&#160;\u2022&#160;</string>
+    <string name="at">&#160;at&#160;</string>
+    <string name="select_your_gdg">Welcome to GDG NG Events!\n Please select your GDG to get started.</string>
+    <string name="submit">Submit</string>
+    <string name="saved">Saved successfully</string>
+    <string name="gdg_logo">GDG Logo</string>
+    <string name="mark_as_favorite">Mark as favorite</string>
+    <string name="no_gdgs_available">No GDGs are currently available. \nPlease check back later.</string>
+    <string name="change_gdg">Change GDG option</string>
+    <string name="select_another_gdg">Please select another GDG from the list.</string>
+    <string name="gdg_organizers_in_nigeria">GDG Organizers in Nigeria</string>
+    <string name="favorite_events">Favorite Events</string>
+
+    <string name="gdg_organizers">GDG Organizers</string>
+    <string name="gdg_champion">GDG Champion</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="firebase_url">https://gdg-ng-events.firebaseio.com/</string>
+    <string name="gdg_firebase_url">https://gdg-ng-events.firebaseio.com/gdg</string>
+    <string name="event_firebase_url">https://gdg-ng-events.firebaseio.com/events</string>
+
+    <string name="uber_client_id"></string>
+
+    <string name="batch_api_key"></string>
+
+    <string name="gcm_sender_id"></string>
+
+    <string name="title_activity_champion_list">ChampionListActivity</string>
+    <string name="title_organizerevent_list">OrganizerEvents</string>
+    <string name="title_organizerevent_detail">OrganizerEvent Detail</string>
+    <string name="title_activity_organizer_event_detail">OrganizerEventDetailActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
+
+</resources>

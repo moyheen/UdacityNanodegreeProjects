@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_upcoming"
+            android:checked="true"
+            android:icon="@drawable/ic_menu_upcoming"
+            android:title="@string/upcoming_events" />
+
+        <item
+            android:id="@+id/nav_past"
+            android:icon="@drawable/ic_menu_past"
+            android:title="@string/past_events" />
+
+        <item
+            android:id="@+id/nav_favorites"
+            android:icon="@drawable/ic_menu_saved"
+            android:title="@string/favorites" />
+
+        <item
+            android:id="@+id/change_gdg"
+            android:icon="@drawable/ic_action_change_gdg"
+            android:title="@string/change_gdg" />
+    </group>
+
+</menu>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_organizers"
+        android:icon="@drawable/ic_menu_organizers"
+        android:orderInCategory="100"
+        android:title="@string/gdg_organizers"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_champion"
+        android:icon="@drawable/ic_menu_champion"
+        android:orderInCategory="200"
+        android:title="@string/gdg_champion"
+        app:showAsAction="never" />
+
+</menu>
