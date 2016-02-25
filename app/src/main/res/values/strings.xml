@@ -63,11 +63,11 @@
     <string name="gdg_firebase_url">https://gdg-ng-events.firebaseio.com/gdg</string>
     <string name="event_firebase_url">https://gdg-ng-events.firebaseio.com/events</string>
 
-    <string name="uber_client_id">bi6mknO5liDJ2RjKSJZeddcuQksSGkNq</string>
+    <string name="uber_client_id"></string>
 
-    <string name="batch_api_key">56C6A69A773A867E910D106271189E</string>
+    <string name="batch_api_key"></string>
 
-    <string name="gcm_sender_id">451678522619</string>
+    <string name="gcm_sender_id"></string>
 
     <string name="title_activity_champion_list">ChampionListActivity</string>
     <string name="title_organizerevent_list">OrganizerEvents</string>

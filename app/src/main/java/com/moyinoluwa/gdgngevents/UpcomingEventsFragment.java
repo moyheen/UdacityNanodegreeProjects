@@ -2,12 +2,16 @@ package com.moyinoluwa.gdgngevents;
 
 
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -228,11 +232,20 @@ public class UpcomingEventsFragment extends Fragment {
                     if (dataSnapshot.getChildrenCount() > 0) {
                         eventList.clear();
 
+                        int notifyId = 1;
+                        int numofEvents = 0;
+
                         for (DataSnapshot data : dataSnapshot.getChildren()) {
                             Event event = data.getValue(Event.class);
                             // Only add events to the list if the event date is in the future
                             if (DateParser.isUpcoming(event.getEvent_date(), event.getEvent_time())) {
                                 eventList.add(event);
+
+                                // Count the number of events happening in 15 minutes time
+                                if (DateParser.isInFifteenMinutes(event.getEvent_date(), event.getEvent_time())) {
+                                    // Update the number of notifications
+                                    ++numofEvents;
+                                }
                             }
                         }
 
@@ -243,6 +256,18 @@ public class UpcomingEventsFragment extends Fragment {
                                 eventType.setVisibility(View.VISIBLE);
                                 recyclerView.setVisibility(View.VISIBLE);
                                 mEventsRecyclerViewAdapter.notifyDataSetChanged();
+
+                                String text;
+                                // Display a notification if such event exists
+                                if (numofEvents > 0) {
+                                    if (numofEvents == 1) {
+                                        text = "one";
+                                    } else {
+                                        text = "multiple";
+                                    }
+                                    createNotification(notifyId, numofEvents, text);
+                                }
+
                                 // Update the widget with the first value from the list
                                 updateWidgets(eventList.get(0));
                             }
@@ -259,6 +284,39 @@ public class UpcomingEventsFragment extends Fragment {
             Toast.makeText(getActivity(), getResources().getString(R.string.no_network_connection),
                     Toast.LENGTH_SHORT).show();
         }
+    }
+
+    /**
+     * Creates notification for upcoming events
+     **/
+    private void createNotification(int notifyId, int numOfEvents, String text) {
+        if (text.equals("multiple")) {
+            text = numOfEvents + " events are happening in 15 minutes!";
+        } else if (text.equals("one")) {
+            text = numOfEvents + " event is happening in 15 minutes!";
+        }
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getActivity())
+                .setSmallIcon(android.R.drawable.ic_menu_info_details)
+                .setContentTitle(getResources().getString(R.string.app_name))
+                .setContentText(text)
+                .setAutoCancel(true);
+
+        // Creates an intent for the Activity
+        Intent resultIntent = new Intent(getActivity(), ItemListActivity.class);
+
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(getActivity());
+        stackBuilder.addParentStack(ItemListActivity.class);
+        stackBuilder.addNextIntent(resultIntent);
+
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(
+                0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        mBuilder.setContentIntent(resultPendingIntent);
+        mBuilder.setContentText(text).setNumber(numOfEvents);
+        NotificationManager notificationManager = (NotificationManager)
+                getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(notifyId, mBuilder.build());
     }
 
     /**

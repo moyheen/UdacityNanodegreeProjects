@@ -12,7 +12,44 @@ import java.util.Locale;
 public class DateParser {
 
     /**
-     * Transforms the date and time to a SimpleDateFormat
+     * Transforms the date and time to a SimpleDateFormat and checks if it's in 15 minutes or less
+     **/
+    public static boolean isInFifteenMinutes(String rawDate, String rawTime) {
+        boolean isInFifteenMinutes = false;
+        final int FIFTEEN_SECONDS_IN_MILLIS = 15000;
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss", Locale.getDefault());
+        String dateInString = createDateInString(rawDate, rawTime);
+        Date date = null;
+        // Convert the date to a SimpleDateFormat
+        try {
+            date = simpleDateFormat.parse(dateInString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        // Set the time for the previously formatted date
+        Calendar cEnd = Calendar.getInstance(Locale.getDefault());
+        cEnd.clear();
+        cEnd.setTime(date);
+
+        // Get the time for the previously formatted date in milliseconds
+        Long futureTime = cEnd.getTimeInMillis();
+
+        // Get the current time
+        Calendar cCurrent = Calendar.getInstance(Locale.getDefault());
+
+        // Get the current time in milliseconds
+        Long currentTime = cCurrent.getTimeInMillis();
+
+        // Compare the two dates to determine if the event is in 15 minutes time
+        isInFifteenMinutes = (futureTime - currentTime) <= FIFTEEN_SECONDS_IN_MILLIS;
+
+        return isInFifteenMinutes;
+    }
+
+    /**
+     * Transforms the date and time to a SimpleDateFormat and checks if it's upcoming
      **/
     public static boolean isUpcoming(String rawDate, String rawTime) {
         boolean upcoming = false;
