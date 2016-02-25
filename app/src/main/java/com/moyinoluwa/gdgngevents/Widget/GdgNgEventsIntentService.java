@@ -10,6 +10,8 @@ import android.content.SharedPreferences;
 import android.widget.RemoteViews;
 
 import com.moyinoluwa.gdgngevents.DateParser;
+import com.moyinoluwa.gdgngevents.ItemDetailActivity;
+import com.moyinoluwa.gdgngevents.ItemDetailFragment;
 import com.moyinoluwa.gdgngevents.ItemListActivity;
 import com.moyinoluwa.gdgngevents.R;
 
@@ -34,11 +36,15 @@ public class GdgNgEventsIntentService extends IntentService {
         sharedPreferences = getSharedPreferences("gdg_events", Context.MODE_PRIVATE);
 
         String widgetName = sharedPreferences.getString("widget_name", "Name");
-        String widgetDesc = sharedPreferences.getString("widget_desc", "Description");
+        String widgetShortDesc = sharedPreferences.getString("widget_shortDesc", "ShortDescription");
+        String widgetLongDesc = sharedPreferences.getString("widget_longDesc", "LongDescription");
         String widgetVenue = sharedPreferences.getString("widget_venue", "Venue");
         String widgetDate = sharedPreferences.getString("widget_date", "Date");
         String widgetTime = sharedPreferences.getString("widget_time", "Time");
         String widgetDuration = sharedPreferences.getString("widget_duration", "Duration");
+        String widgetSpeakers = sharedPreferences.getString("widget_speakers", "Speakers");
+        String widgetTags = sharedPreferences.getString("widget_tags", "Tags");
+        String widgetGdg = sharedPreferences.getString("widget_gdg", "GDG");
 
         // Perform this loop procedure for each event widget
         for (int appWidgetId : appWidgetIds) {
@@ -47,14 +53,26 @@ public class GdgNgEventsIntentService extends IntentService {
 
             // Add the data to the RemoteViews
             views.setTextViewText(R.id.event_name, widgetName);
-            views.setTextViewText(R.id.short_description, widgetDesc);
+            views.setTextViewText(R.id.short_description, widgetShortDesc);
             views.setTextViewText(R.id.venue, widgetVenue);
             views.setTextViewText(R.id.event_date, widgetDate);
             views.setTextViewText(R.id.event_time, DateParser.formattedTime(widgetTime));
             views.setTextViewText(R.id.duration, widgetDuration);
 
             // Create an Intent to launch ItemListActivity
-            Intent launchIntent = new Intent(this, ItemListActivity.class);
+            Intent launchIntent = new Intent(this, ItemDetailActivity.class);
+
+            launchIntent.putExtra(ItemDetailFragment.EVENT_NAME, widgetName);
+            launchIntent.putExtra(ItemDetailFragment.SHORT_DESCRIPTION, widgetShortDesc);
+            launchIntent.putExtra(ItemDetailFragment.LONG_DESCRIPTION, widgetLongDesc);
+            launchIntent.putExtra(ItemDetailFragment.VENUE, widgetVenue);
+            launchIntent.putExtra(ItemDetailFragment.EVENT_DATE, widgetDate);
+            launchIntent.putExtra(ItemDetailFragment.EVENT_TIME, widgetTime);
+            launchIntent.putExtra(ItemDetailFragment.DURATION, widgetDuration);
+            launchIntent.putExtra(ItemDetailFragment.SPEAKERS, widgetSpeakers);
+            launchIntent.putExtra(ItemDetailFragment.EVENT_TAGS, widgetTags);
+            launchIntent.putExtra(ItemDetailFragment.EVENT_GDG, widgetGdg);
+
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, launchIntent, 0);
             views.setOnClickPendingIntent(R.id.widget, pendingIntent);
 

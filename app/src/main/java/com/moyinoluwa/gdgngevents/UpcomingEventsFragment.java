@@ -272,11 +272,15 @@ public class UpcomingEventsFragment extends Fragment {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString("widget_name", event.getEvent_name());
-        editor.putString("widget_desc", event.getShort_description());
+        editor.putString("widget_shortDesc", event.getShort_description());
+        editor.putString("widget_longDesc", event.getLong_description());
         editor.putString("widget_venue", event.getVenue());
         editor.putString("widget_date", event.getEvent_date());
         editor.putString("widget_time", event.getEvent_time());
         editor.putString("widget_duration", event.getDuration());
+        editor.putString("widget_speakers", event.getSpeakers());
+        editor.putString("widget_tags", event.getEvent_tags());
+        editor.putString("widget_gdg", gdg);
         editor.apply();
 
 
