@@ -52,6 +52,8 @@
     <string name="select_another_gdg">Please select another GDG from the list.</string>
     <string name="gdg_organizers_in_nigeria">GDG Organizers in Nigeria</string>
     <string name="favorite_events">Favorite Events</string>
+    <string name="new_event_button">Create new event</string>
+    <string name="new_organizer_button">Create new organizer</string>
 
     <string name="gdg_organizers">GDG Organizers</string>
     <string name="gdg_champion">GDG Champion</string>

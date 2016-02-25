@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'gdgngevents'
             keyPassword 'gdgngevents'
-            storeFile file('/Users/moyinoluwa/gdgngevents.jks')
+            storeFile file('gdgngevents.jks')
             storePassword 'gdgngevents'
         }
     }

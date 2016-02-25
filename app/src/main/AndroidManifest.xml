@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.moyinoluwa.gdgngevents">
+    package="com.moyinoluwa.gdgngevents" >
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -20,7 +20,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -28,7 +28,7 @@
         <activity
             android:name=".ItemListActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,7 +39,7 @@
             android:name=".ItemDetailActivity"
             android:label="@string/title_item_detail"
             android:parentActivityName=".ItemListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.moyinoluwa.gdgngevents.ItemListActivity" />
@@ -47,7 +47,7 @@
         <activity
             android:name=".Organizers.OrganizersLoginActivity"
             android:label="@string/gdg_organizers"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.moyinoluwa.gdgngevents.ItemListActivity" />
@@ -55,7 +55,7 @@
         <activity
             android:name=".Champion.ChampionLoginActivity"
             android:label="@string/gdg_champion"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.moyinoluwa.gdgngevents.ItemListActivity" />
@@ -63,7 +63,7 @@
         <activity
             android:name=".Champion.ChampionListActivity"
             android:label="@string/gdg_organizers_in_nigeria"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Champion.ChampionLoginActivity" />
@@ -71,7 +71,7 @@
         <activity
             android:name=".Organizers.OrganizerEventDetailActivity"
             android:label="@string/events"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Champion.ChampionLoginActivity" />
@@ -79,7 +79,7 @@
         <activity
             android:name=".Organizers.CreateEventsActivity"
             android:label="@string/create_event"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Organizers.OrganizerEventDetailActivity" />
@@ -94,14 +94,14 @@
 
         <receiver
             android:name="com.batch.android.BatchPushReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND">
+            android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
 
                 <category android:name="com.moyinoluwa.gdgngevents" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".Widget.GdgNgEventsWidgetProvider">
+        <receiver android:name=".Widget.GdgNgEventsWidgetProvider" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.moyinoluwa.gdgngevents.ACTION_DATA_UPDATED" />
