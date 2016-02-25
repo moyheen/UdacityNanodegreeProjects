@@ -52,6 +52,8 @@
     <string name="select_another_gdg">Please select another GDG from the list.</string>
     <string name="gdg_organizers_in_nigeria">GDG Organizers in Nigeria</string>
     <string name="favorite_events">Favorite Events</string>
+    <string name="new_event_button">Create new event</string>
+    <string name="new_organizer_button">Create new organizer</string>
 
     <string name="gdg_organizers">GDG Organizers</string>
     <string name="gdg_champion">GDG Champion</string>
@@ -61,11 +63,11 @@
     <string name="gdg_firebase_url">https://gdg-ng-events.firebaseio.com/gdg</string>
     <string name="event_firebase_url">https://gdg-ng-events.firebaseio.com/events</string>
 
-    <string name="uber_client_id"></string>
+    <string name="uber_client_id">bi6mknO5liDJ2RjKSJZeddcuQksSGkNq</string>
 
-    <string name="batch_api_key"></string>
+    <string name="batch_api_key">56C6A69A773A867E910D106271189E</string>
 
-    <string name="gcm_sender_id"></string>
+    <string name="gcm_sender_id">451678522619</string>
 
     <string name="title_activity_champion_list">ChampionListActivity</string>
     <string name="title_organizerevent_list">OrganizerEvents</string>
